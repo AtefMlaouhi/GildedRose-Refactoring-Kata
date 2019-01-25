@@ -35,25 +35,28 @@ namespace GildedRoseRefactoringKata
                     if (Items[i].Quality < 50)
                     {
                         this.SetQuality(i, 1);
+                    }
+                }
 
-                        condition = Items[i].Name == "Backstage passes to a TAFKAL80ETC concert";
+                condition = Items[i].Name == "Backstage passes to a TAFKAL80ETC concert";
 
-                        if (condition)
+                if (condition)
+                {
+                    if (Items[i].Quality < 50)
+                    {
+                        if (Items[i].SellIn < 11)
                         {
-                            if (Items[i].SellIn < 11)
+                            if (Items[i].Quality < 50)
                             {
-                                if (Items[i].Quality < 50)
-                                {
-                                    this.SetQuality(i, 1);
-                                }
+                                this.SetQuality(i, 1);
                             }
+                        }
 
-                            if (Items[i].SellIn < 6)
+                        if (Items[i].SellIn < 6)
+                        {
+                            if (Items[i].Quality < 50)
                             {
-                                if (Items[i].Quality < 50)
-                                {
-                                    this.SetQuality(i, 1);
-                                }
+                                this.SetQuality(i, 1);
                             }
                         }
                     }
