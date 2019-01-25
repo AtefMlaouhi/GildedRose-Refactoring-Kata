@@ -16,6 +16,13 @@ namespace GildedRoseRefactoringKata
             bool condition = false;
             for (var i = 0; i < Items.Count; i++)
             {
+
+                condition = Items[i].Name == "Sulfuras, Hand of Ragnaros";
+                if (condition)
+                {
+                    continue;
+                }
+
                 condition = Items[i].Name != "Aged Brie" && Items[i].Name != "Backstage passes to a TAFKAL80ETC concert";
 
                 if (condition)
