@@ -71,6 +71,18 @@ namespace GildedRoseRefactoringKata
 
                 if (Items[i].SellIn < 0)
                 {
+                    condition = Items[i].Name == "Aged Brie";
+                    if (condition)
+                    {
+                        if (Items[i].Quality < 50)
+                        {
+                            this.SetQuality(i, 1);
+                        }
+                    }
+                }
+
+                if (Items[i].SellIn < 0)
+                {
                     condition = Items[i].Name != "Aged Brie";
 
                     if (condition)
@@ -92,13 +104,6 @@ namespace GildedRoseRefactoringKata
                         else
                         {
                             this.SetQuality(i, -Items[i].Quality);
-                        }
-                    }
-                    else
-                    {
-                        if (Items[i].Quality < 50)
-                        {
-                            this.SetQuality(i, 1);
                         }
                     }
                 }
