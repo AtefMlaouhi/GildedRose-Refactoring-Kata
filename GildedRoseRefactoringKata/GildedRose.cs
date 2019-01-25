@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace GildedRoseRefactoringKata
 {
@@ -20,7 +21,7 @@ namespace GildedRoseRefactoringKata
                     {
                         if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
                         {
-                            Items[i].Quality = Items[i].Quality - 1;
+                            this.SetQuality(i, -1);
                         }
                     }
                 }
@@ -28,7 +29,7 @@ namespace GildedRoseRefactoringKata
                 {
                     if (Items[i].Quality < 50)
                     {
-                        Items[i].Quality = Items[i].Quality + 1;
+                        this.SetQuality(i, 1);
 
                         if (Items[i].Name == "Backstage passes to a TAFKAL80ETC concert")
                         {
@@ -36,7 +37,7 @@ namespace GildedRoseRefactoringKata
                             {
                                 if (Items[i].Quality < 50)
                                 {
-                                    Items[i].Quality = Items[i].Quality + 1;
+                                    this.SetQuality(i, 1);
                                 }
                             }
 
@@ -44,7 +45,7 @@ namespace GildedRoseRefactoringKata
                             {
                                 if (Items[i].Quality < 50)
                                 {
-                                    Items[i].Quality = Items[i].Quality + 1;
+                                    this.SetQuality(i, 1);
                                 }
                             }
                         }
@@ -66,24 +67,29 @@ namespace GildedRoseRefactoringKata
                             {
                                 if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
                                 {
-                                    Items[i].Quality = Items[i].Quality - 1;
+                                    this.SetQuality(i, -1);
                                 }
                             }
                         }
                         else
                         {
-                            Items[i].Quality = Items[i].Quality - Items[i].Quality;
+                            this.SetQuality(i, -Items[i].Quality);
                         }
                     }
                     else
                     {
                         if (Items[i].Quality < 50)
                         {
-                            Items[i].Quality = Items[i].Quality + 1;
+                            this.SetQuality(i, 1);
                         }
                     }
                 }
             }
+        }
+
+        private void SetQuality(int index, int value)
+        {
+            Items[index].Quality += value;
         }
     }
 }
