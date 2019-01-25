@@ -1,0 +1,8 @@
+language: csharp
+solution: GildedRoseRefactoringKata.sln
+install:
+  - nuget restore GildedRoseRefactoringKata.sln
+  - nuget install NUnit.Runners -Version 3.6.1 -OutputDirectory testrunner
+script:
+  - xbuild /p:Configuration=Release GildedRoseRefactoringKata.sln
+  - mono ./testrunner/NUnit.ConsoleRunner.3.6.1/tools/nunit3-console.exe ./GildedRoseRefactoringKata.Tests/bin/Release/GildedRoseRefactoringKata.Tests.dll
