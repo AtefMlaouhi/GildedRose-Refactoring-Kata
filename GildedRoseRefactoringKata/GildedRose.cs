@@ -23,6 +23,26 @@ namespace GildedRoseRefactoringKata
                     continue;
                 }
 
+                condition = Items[i].Name == "Aged Brie";
+                if (condition)
+                {
+                    this.SetSellIn(i);
+                    if (Items[i].Quality < 50)
+                    {
+                        this.SetQuality(i, 1);
+                    }
+                    if (Items[i].SellIn < 0)
+                    {
+                        if (Items[i].Quality < 50)
+                        {
+                            this.SetQuality(i, 1);
+                        }
+                    }
+
+                    continue;
+                }
+
+
                 condition = Items[i].Name != "Aged Brie" && Items[i].Name != "Backstage passes to a TAFKAL80ETC concert";
 
                 if (condition)
@@ -74,18 +94,6 @@ namespace GildedRoseRefactoringKata
                 if (condition)
                 {
                     this.SetSellIn(i);
-                }
-
-                if (Items[i].SellIn < 0)
-                {
-                    condition = Items[i].Name == "Aged Brie";
-                    if (condition)
-                    {
-                        if (Items[i].Quality < 50)
-                        {
-                            this.SetQuality(i, 1);
-                        }
-                    }
                 }
 
                 if (Items[i].SellIn < 0)
