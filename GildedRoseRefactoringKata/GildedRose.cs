@@ -13,13 +13,18 @@ namespace GildedRoseRefactoringKata
 
         public void UpdateQuality()
         {
+            bool condition = false;
             for (var i = 0; i < Items.Count; i++)
             {
-                if (Items[i].Name != "Aged Brie" && Items[i].Name != "Backstage passes to a TAFKAL80ETC concert")
+                condition = Items[i].Name != "Aged Brie" && Items[i].Name != "Backstage passes to a TAFKAL80ETC concert";
+
+                if (condition)
                 {
                     if (Items[i].Quality > 0)
                     {
-                        if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
+                        condition = Items[i].Name != "Sulfuras, Hand of Ragnaros";
+
+                        if (condition)
                         {
                             this.SetQuality(i, -1);
                         }
@@ -31,7 +36,9 @@ namespace GildedRoseRefactoringKata
                     {
                         this.SetQuality(i, 1);
 
-                        if (Items[i].Name == "Backstage passes to a TAFKAL80ETC concert")
+                        condition = Items[i].Name == "Backstage passes to a TAFKAL80ETC concert";
+
+                        if (condition)
                         {
                             if (Items[i].SellIn < 11)
                             {
@@ -52,20 +59,28 @@ namespace GildedRoseRefactoringKata
                     }
                 }
 
-                if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
+                condition = Items[i].Name != "Sulfuras, Hand of Ragnaros";
+
+                if (condition)
                 {
                     this.SetSellIn(i);
                 }
 
                 if (Items[i].SellIn < 0)
                 {
-                    if (Items[i].Name != "Aged Brie")
+                    condition = Items[i].Name != "Aged Brie";
+
+                    if (condition)
                     {
-                        if (Items[i].Name != "Backstage passes to a TAFKAL80ETC concert")
+                        condition = Items[i].Name != "Backstage passes to a TAFKAL80ETC concert";
+
+                        if (condition)
                         {
                             if (Items[i].Quality > 0)
                             {
-                                if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
+                                condition = Items[i].Name != "Sulfuras, Hand of Ragnaros";
+
+                                if (condition)
                                 {
                                     this.SetQuality(i, -1);
                                 }
