@@ -43,6 +43,40 @@ namespace GildedRoseRefactoringKata
                 }
 
 
+                condition = Items[i].Name == "Backstage passes to a TAFKAL80ETC concert";
+
+                if (condition)
+                {
+                    if (Items[i].Quality < 50)
+                    {
+                        this.SetQuality(i, 1);
+                    }
+                    if (Items[i].SellIn < 11)
+                    {
+                        if (Items[i].Quality < 50)
+                        {
+                            this.SetQuality(i, 1);
+                        }
+                    }
+
+                    if (Items[i].SellIn < 6)
+                    {
+                        if (Items[i].Quality < 50)
+                        {
+                            this.SetQuality(i, 1);
+                        }
+                    }
+
+                    this.SetSellIn(i);
+
+                    if (Items[i].SellIn < 0)
+                    {
+                        this.SetQuality(i, -Items[i].Quality);
+                    }
+                    continue;
+                }
+
+
                 condition = Items[i].Name != "Aged Brie" && Items[i].Name != "Backstage passes to a TAFKAL80ETC concert";
 
                 if (condition)
