@@ -54,7 +54,7 @@ namespace GildedRoseRefactoringKata
 
                 if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
                 {
-                    Items[i].SellIn = Items[i].SellIn - 1;
+                    this.SetSellIn(i);
                 }
 
                 if (Items[i].SellIn < 0)
@@ -85,6 +85,12 @@ namespace GildedRoseRefactoringKata
                     }
                 }
             }
+        }
+
+        private void SetSellIn(int index)
+        {
+            Items[index].SellIn--;
+
         }
 
         private void SetQuality(int index, int value)
