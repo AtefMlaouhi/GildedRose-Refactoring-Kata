@@ -17,144 +17,143 @@ namespace GildedRoseRefactoringKata
             for (var i = 0; i < Items.Count; i++)
             {
 
-                condition = Items[i].Name == "Sulfuras, Hand of Ragnaros";
-                if (condition)
+                switch (Items[i].Name)
                 {
-                    continue;
-                }
-
-                condition = Items[i].Name == "Aged Brie";
-                if (condition)
-                {
-                    this.SetSellIn(i);
-                    if (Items[i].Quality < 50)
-                    {
-                        this.SetQuality(i, 1);
-                    }
-                    if (Items[i].SellIn < 0)
-                    {
-                        if (Items[i].Quality < 50)
+                    case "Sulfuras, Hand of Ragnaros":
                         {
-                            this.SetQuality(i, 1);
+                            break;
                         }
-                    }
 
-                    continue;
-                }
-
-
-                condition = Items[i].Name == "Backstage passes to a TAFKAL80ETC concert";
-
-                if (condition)
-                {
-                    if (Items[i].Quality < 50)
-                    {
-                        this.SetQuality(i, 1);
-                    }
-                    if (Items[i].SellIn < 11)
-                    {
-                        if (Items[i].Quality < 50)
+                    case "Aged Brie":
                         {
-                            this.SetQuality(i, 1);
+                            this.SetSellIn(i);
+                            if (Items[i].Quality < 50)
+                            {
+                                this.SetQuality(i, 1);
+                            }
+                            if (Items[i].SellIn < 0)
+                            {
+                                if (Items[i].Quality < 50)
+                                {
+                                    this.SetQuality(i, 1);
+                                }
+                            }
+                            break;
                         }
-                    }
-
-                    if (Items[i].SellIn < 6)
-                    {
-                        if (Items[i].Quality < 50)
-                        {
-                            this.SetQuality(i, 1);
-                        }
-                    }
-
-                    this.SetSellIn(i);
-
-                    if (Items[i].SellIn < 0)
-                    {
-                        this.SetQuality(i, -Items[i].Quality);
-                    }
-                    continue;
-                }
-
-
-                condition = Items[i].Name != "Aged Brie" && Items[i].Name != "Backstage passes to a TAFKAL80ETC concert";
-
-                if (condition)
-                {
-                    if (Items[i].Quality > 0)
-                    {
-                        condition = Items[i].Name != "Sulfuras, Hand of Ragnaros";
-
-                        if (condition)
-                        {
-                            this.SetQuality(i, -1);
-                        }
-                    }
-                }
-                else
-                {
-                    if (Items[i].Quality < 50)
-                    {
-                        this.SetQuality(i, 1);
-                    }
-                }
-
-                condition = Items[i].Name == "Backstage passes to a TAFKAL80ETC concert";
-
-                if (condition)
-                {
-                    if (Items[i].Quality < 50)
-                    {
-                        if (Items[i].SellIn < 11)
+                    case "Backstage passes to a TAFKAL80ETC concert":
                         {
                             if (Items[i].Quality < 50)
                             {
                                 this.SetQuality(i, 1);
                             }
-                        }
-
-                        if (Items[i].SellIn < 6)
-                        {
-                            if (Items[i].Quality < 50)
+                            if (Items[i].SellIn < 11)
                             {
-                                this.SetQuality(i, 1);
+                                if (Items[i].Quality < 50)
+                                {
+                                    this.SetQuality(i, 1);
+                                }
                             }
-                        }
-                    }
-                }
 
-                condition = Items[i].Name != "Sulfuras, Hand of Ragnaros";
-
-                if (condition)
-                {
-                    this.SetSellIn(i);
-                }
-
-                if (Items[i].SellIn < 0)
-                {
-                    condition = Items[i].Name != "Aged Brie";
-
-                    if (condition)
-                    {
-                        condition = Items[i].Name != "Backstage passes to a TAFKAL80ETC concert";
-
-                        if (condition)
-                        {
-                            if (Items[i].Quality > 0)
+                            if (Items[i].SellIn < 6)
                             {
-                                condition = Items[i].Name != "Sulfuras, Hand of Ragnaros";
+                                if (Items[i].Quality < 50)
+                                {
+                                    this.SetQuality(i, 1);
+                                }
+                            }
+
+                            this.SetSellIn(i);
+
+                            if (Items[i].SellIn < 0)
+                            {
+                                this.SetQuality(i, -Items[i].Quality);
+                            }
+                            break;
+                        }
+                    default:
+                        {
+                            condition = Items[i].Name != "Aged Brie" && Items[i].Name != "Backstage passes to a TAFKAL80ETC concert";
+
+                            if (condition)
+                            {
+                                if (Items[i].Quality > 0)
+                                {
+                                    condition = Items[i].Name != "Sulfuras, Hand of Ragnaros";
+
+                                    if (condition)
+                                    {
+                                        this.SetQuality(i, -1);
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                if (Items[i].Quality < 50)
+                                {
+                                    this.SetQuality(i, 1);
+                                }
+                            }
+
+                            condition = Items[i].Name == "Backstage passes to a TAFKAL80ETC concert";
+
+                            if (condition)
+                            {
+                                if (Items[i].Quality < 50)
+                                {
+                                    if (Items[i].SellIn < 11)
+                                    {
+                                        if (Items[i].Quality < 50)
+                                        {
+                                            this.SetQuality(i, 1);
+                                        }
+                                    }
+
+                                    if (Items[i].SellIn < 6)
+                                    {
+                                        if (Items[i].Quality < 50)
+                                        {
+                                            this.SetQuality(i, 1);
+                                        }
+                                    }
+                                }
+                            }
+
+                            condition = Items[i].Name != "Sulfuras, Hand of Ragnaros";
+
+                            if (condition)
+                            {
+                                this.SetSellIn(i);
+                            }
+
+                            if (Items[i].SellIn < 0)
+                            {
+                                condition = Items[i].Name != "Aged Brie";
 
                                 if (condition)
                                 {
-                                    this.SetQuality(i, -1);
+                                    condition = Items[i].Name != "Backstage passes to a TAFKAL80ETC concert";
+
+                                    if (condition)
+                                    {
+                                        if (Items[i].Quality > 0)
+                                        {
+                                            condition = Items[i].Name != "Sulfuras, Hand of Ragnaros";
+
+                                            if (condition)
+                                            {
+                                                this.SetQuality(i, -1);
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        this.SetQuality(i, -Items[i].Quality);
+                                    }
                                 }
                             }
+                            break;
                         }
-                        else
-                        {
-                            this.SetQuality(i, -Items[i].Quality);
-                        }
-                    }
+
                 }
             }
         }
