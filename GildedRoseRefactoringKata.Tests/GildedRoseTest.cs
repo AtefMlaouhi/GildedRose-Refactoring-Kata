@@ -77,7 +77,6 @@ namespace GildedRoseRefactoringKata
             }
         }
 
-
         [Test, Description("Aged Brie")]
         public void When_UpdateQuality_Aged_Brie_Quality_Should_Be_positive()
         {
@@ -127,5 +126,17 @@ namespace GildedRoseRefactoringKata
             app.UpdateQuality();
             Assert.GreaterOrEqual(Items[0].Quality, 50);
         }
+
+        [Test, Description("Sulfuras")]
+        public void When_UpdateQuality_Sulfuras_Quality_Should_Be_Never_Alters()
+        {
+            IList<Item> Items = new List<Item> { new Item { Name = "Sulfuras, Hand of Ragnaros", SellIn = -1, Quality = 80 } };
+            GildedRose app = new GildedRose(Items);
+            app.UpdateQuality();
+            Assert.AreEqual(Items[0].Quality, 80);
+            app.UpdateQuality();
+            Assert.AreEqual(Items[0].Quality, 80);
+        }
+
     }
 }
