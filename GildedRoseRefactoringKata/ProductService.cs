@@ -10,6 +10,9 @@ namespace GildedRoseRefactoringKata
     {
         public Item Product { get; set; }
 
+
+        public virtual void UpdateProductQuality() { }
+
         protected void DecreaseSellIn(int value)
         {
             Product.SellIn += value;

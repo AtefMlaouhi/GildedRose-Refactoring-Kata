@@ -44,6 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SulfurasProductService.cs" />
+    <Compile Include="BackstagePassesProductService.cs" />
     <Compile Include="AgedBrieProductService.cs" />
     <Compile Include="DefaultProductService.cs" />
     <Compile Include="FindUpdateService.cs" />

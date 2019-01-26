@@ -15,7 +15,7 @@ namespace GildedRoseRefactoringKata
             this.Product = product;
         }
 
-        public void UpdateProductQuality()
+        public override void UpdateProductQuality()
         {
             this.DecreaseSellIn(-1);
             if (Product.Quality < 50)
