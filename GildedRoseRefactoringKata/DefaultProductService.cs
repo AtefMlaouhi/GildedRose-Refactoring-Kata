@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace GildedRoseRefactoringKata
 {
-    public class DefaultProductService : IUpdateQualityServices
+    public class DefaultProductService : ProductService, IUpdateQualityServices
     {
-        public Item Product { get; set; }
-
         public static Type ServicesType => typeof(DefaultProductService);
 
         public DefaultProductService(Item product)
@@ -34,17 +32,6 @@ namespace GildedRoseRefactoringKata
                     this.SetQuality(-1);
                 }
             }
-        }
-
-
-        private void DecreaseSellIn(int value)
-        {
-            Product.SellIn += value;
-        }
-
-        private void SetQuality(int value)
-        {
-            Product.Quality += value;
         }
     }
 }

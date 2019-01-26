@@ -7,7 +7,7 @@ namespace GildedRoseRefactoringKata
     public class GildedRose
     {
         IList<Item> Items;
-        private string[] products = { "Sulfuras, Hand of Ragnaros", "Aged Brie", "Backstage passes to a TAFKAL80ETC concert" };
+        private string[] products = { "Sulfuras, Hand of Ragnaros", "Backstage passes to a TAFKAL80ETC concert" };
 
         public GildedRose(IList<Item> Items)
         {
@@ -22,15 +22,22 @@ namespace GildedRoseRefactoringKata
             for (var i = 0; i < Items.Count; i++)
             {
                 bool condition = products.Contains(Items[i].Name);
+                serviceDelegate.SetItem(Items[i]);
 
-                if(condition)
+                if (condition)
                 {
                     OldMethod(i);
                 }
                 else
                 {
-                    serviceDelegate.SetItem(Items[i]);
-                    serviceDelegate.SetServiceType(DefaultProductService.ServicesType);
+                    if (Items[i].Name == "Aged Brie")
+                    {
+                        serviceDelegate.SetServiceType(AgedBrieProductService.ServicesType);
+                    }
+                    else
+                    {
+                        serviceDelegate.SetServiceType(DefaultProductService.ServicesType);
+                    }
                     client.SetUpdateQualityClient(serviceDelegate);
                     serviceDelegate.DoUpdate();
                 }
@@ -47,22 +54,6 @@ namespace GildedRoseRefactoringKata
                         break;
                     }
 
-                case "Aged Brie":
-                    {
-                        this.SetSellIn(i);
-                        if (Items[i].Quality < 50)
-                        {
-                            this.SetQuality(i, 1);
-                        }
-                        if (Items[i].SellIn < 0)
-                        {
-                            if (Items[i].Quality < 50)
-                            {
-                                this.SetQuality(i, 1);
-                            }
-                        }
-                        break;
-                    }
                 case "Backstage passes to a TAFKAL80ETC concert":
                     {
                         if (Items[i].Quality < 50)
