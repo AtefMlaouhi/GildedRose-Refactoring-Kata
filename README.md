@@ -61,6 +61,6 @@ MIT
 
 ## Suggested attribution
 
-- [Wikipedia](https://en.wikipedia.org/wiki/Code_refactoring)
-- [refactoring](https://refactoring.com)
--
+- [Wikipedia code refactoring](https://en.wikipedia.org/wiki/Code_refactoring)
+- [refactoring.com](https://refactoring.com)
+- [sourceMaking.com refactoring](https://sourcemaking.com/refactoring)

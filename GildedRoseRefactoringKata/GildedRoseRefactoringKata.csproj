@@ -44,10 +44,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DefaultProductService.cs" />
+    <Compile Include="FindUpdateService.cs" />
     <Compile Include="GildedRose.cs" />
     <Compile Include="Item.cs" />
+    <Compile Include="IUpdateQualityRules.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceDelegate.cs" />
+    <Compile Include="UpdateQualityClient.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Reflection;
 using System.Text;
 using NUnit.Framework;
 
@@ -11,7 +12,8 @@ namespace GildedRoseRefactoringKata
         [Test]
         public void ThirtyDays()
         {
-            var lines = File.ReadAllLines("./GildedRoseRefactoringKata.Tests/ThirtyDays.txt");
+            var pathApp = AppDomain.CurrentDomain.BaseDirectory;
+            var lines = File.ReadAllLines($"{pathApp}//ThirtyDays.txt");
 
             StringBuilder fakeoutput = new StringBuilder();
             Console.SetOut(new StringWriter(fakeoutput));

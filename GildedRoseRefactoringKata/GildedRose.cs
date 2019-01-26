@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace GildedRoseRefactoringKata
 {
     public class GildedRose
     {
         IList<Item> Items;
+        private string[] products = { "Sulfuras, Hand of Ragnaros", "Aged Brie", "Backstage passes to a TAFKAL80ETC concert" };
+
         public GildedRose(IList<Item> Items)
         {
             this.Items = Items;
@@ -13,82 +16,87 @@ namespace GildedRoseRefactoringKata
 
         public void UpdateQuality()
         {
+            ServiceDelegate serviceDelegate = new ServiceDelegate();
+            UpdateQualityClient client = new UpdateQualityClient();
+
             for (var i = 0; i < Items.Count; i++)
             {
-                switch (Items[i].Name)
+                bool condition = products.Contains(Items[i].Name);
+
+                if(condition)
                 {
-                    case "Sulfuras, Hand of Ragnaros":
-                        {
-                            break;
-                        }
-
-                    case "Aged Brie":
-                        {
-                            this.SetSellIn(i);
-                            if (Items[i].Quality < 50)
-                            {
-                                this.SetQuality(i, 1);
-                            }
-                            if (Items[i].SellIn < 0)
-                            {
-                                if (Items[i].Quality < 50)
-                                {
-                                    this.SetQuality(i, 1);
-                                }
-                            }
-                            break;
-                        }
-                    case "Backstage passes to a TAFKAL80ETC concert":
-                        {
-                            if (Items[i].Quality < 50)
-                            {
-                                this.SetQuality(i, 1);
-                            }
-                            if (Items[i].SellIn < 11)
-                            {
-                                if (Items[i].Quality < 50)
-                                {
-                                    this.SetQuality(i, 1);
-                                }
-                            }
-
-                            if (Items[i].SellIn < 6)
-                            {
-                                if (Items[i].Quality < 50)
-                                {
-                                    this.SetQuality(i, 1);
-                                }
-                            }
-
-                            this.SetSellIn(i);
-
-                            if (Items[i].SellIn < 0)
-                            {
-                                Items[i].Quality = 0;
-                            }
-                            break;
-                        }
-                    default:
-                        {
-                            if (Items[i].Quality > 0)
-                            {
-                                this.SetQuality(i, -1);
-                            }
-
-                            this.SetSellIn(i);
-
-                            if (Items[i].SellIn < 0)
-                            {
-                                if (Items[i].Quality > 0)
-                                {
-
-                                    this.SetQuality(i, -1);
-                                }
-                            }
-                            break;
-                        }
-
+                    OldMethod(i);
                 }
+                else
+                {
+                    serviceDelegate.SetItem(Items[i]);
+                    serviceDelegate.SetServiceType(DefaultProductService.ServicesType);
+                    client.SetUpdateQualityClient(serviceDelegate);
+                    serviceDelegate.DoUpdate();
+                }
+            }
+        }
+
+
+        public void OldMethod(int i)
+        {
+            switch (Items[i].Name)
+            {
+                case "Sulfuras, Hand of Ragnaros":
+                    {
+                        break;
+                    }
+
+                case "Aged Brie":
+                    {
+                        this.SetSellIn(i);
+                        if (Items[i].Quality < 50)
+                        {
+                            this.SetQuality(i, 1);
+                        }
+                        if (Items[i].SellIn < 0)
+                        {
+                            if (Items[i].Quality < 50)
+                            {
+                                this.SetQuality(i, 1);
+                            }
+                        }
+                        break;
+                    }
+                case "Backstage passes to a TAFKAL80ETC concert":
+                    {
+                        if (Items[i].Quality < 50)
+                        {
+                            this.SetQuality(i, 1);
+                        }
+                        if (Items[i].SellIn < 11)
+                        {
+                            if (Items[i].Quality < 50)
+                            {
+                                this.SetQuality(i, 1);
+                            }
+                        }
+
+                        if (Items[i].SellIn < 6)
+                        {
+                            if (Items[i].Quality < 50)
+                            {
+                                this.SetQuality(i, 1);
+                            }
+                        }
+
+                        this.SetSellIn(i);
+
+                        if (Items[i].SellIn < 0)
+                        {
+                            Items[i].Quality = 0;
+                        }
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
             }
         }
 
