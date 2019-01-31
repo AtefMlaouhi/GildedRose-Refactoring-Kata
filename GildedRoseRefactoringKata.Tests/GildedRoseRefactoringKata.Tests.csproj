@@ -59,9 +59,9 @@
     <Compile Include="StringEnum_Tests.cs" />
     <Compile Include="Sulfuras_UpdateQuality_Tests.cs" />
     <Compile Include="Aged_Brie_UpdateQuality_Tests.cs" />
-    <Compile Include="ApprovalTest.cs" />
+    <Compile Include="Approval_Tests.cs" />
     <Compile Include="GildedRoseBaseTests.cs" />
-    <Compile Include="GildedRose_UpdateQuality_Test.cs" />
+    <Compile Include="GildedRose_UpdateQuality_Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
