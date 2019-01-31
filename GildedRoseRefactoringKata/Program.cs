@@ -37,8 +37,10 @@ namespace GildedRoseRefactoringKata
 				new Item {Name = "Conjured Mana Cake", SellIn = 3, Quality = 6}
             };
 
-            var app = new GildedRose(Items);
-
+            var app = new GildedRose();
+            app.SetItems(Items);
+            app.Products = new Product[] { Product.Aged_Brie, Product.Backstage_Passes, Product.Sulfuras};
+            app.TypeServices = new Type[] { DefaultProductService.ServicesType, AgedBrieProductService.ServicesType, BackstagePassesProductService.ServicesType, SulfurasProductService.ServicesType };
 
             for (var i = 0; i < 31; i++)
             {

@@ -26,7 +26,8 @@ namespace GildedRoseRefactoringKata
         public void DoUpdate()
         {
             _updateQualityServices = _findUpdateService.GedUdateQualityServices(this._typeServices, this._product);
-            this._updateQualityServices.UpdateProductQuality();
+            if (!(this._updateQualityServices is null))
+                this._updateQualityServices.UpdateProductQuality();
         }
     }
 }

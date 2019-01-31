@@ -10,9 +10,13 @@ namespace GildedRoseRefactoringKata
     {
         public static Type ServicesType => typeof(SulfurasProductService);
 
-        public SulfurasProductService(Item product)
+        public SulfurasProductService(Item product) : base(product)
         {
-            this.Product = product;
+        }
+
+        public override void UpdateProductQuality()
+        {
+            
         }
     }
 }

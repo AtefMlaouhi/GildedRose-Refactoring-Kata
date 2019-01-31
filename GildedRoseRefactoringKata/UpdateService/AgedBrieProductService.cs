@@ -10,25 +10,16 @@ namespace GildedRoseRefactoringKata
     {
         public static Type ServicesType => typeof(AgedBrieProductService);
 
-        public AgedBrieProductService(Item product)
+        public AgedBrieProductService(Item product) : base(product)
         {
-            this.Product = product;
         }
+
 
         public override void UpdateProductQuality()
         {
-            this.DecreaseSellIn(-1);
-            if (Product.Quality < 50)
-            {
-                this.SetQuality(1);
-            }
-            if (Product.SellIn < 0)
-            {
-                if (Product.Quality < 50)
-                {
-                    this.SetQuality(1);
-                }
-            }
+            base.UpdateProductQuality();
+            SetQualityBasedOnQualityLevel(50, 1, SignSet.inf);
+            SetQualityBasedOnSellIn(0, 50, 1, SignSet.inf);
         }
     }
 }
